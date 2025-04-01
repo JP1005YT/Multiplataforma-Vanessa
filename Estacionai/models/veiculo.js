@@ -1,4 +1,4 @@
-class Veiculo {
+export class Veiculo {
     constructor(id, marca, modelo, ano, cor, cliente_id) {
         this.id = id;
         this.marca = marca;

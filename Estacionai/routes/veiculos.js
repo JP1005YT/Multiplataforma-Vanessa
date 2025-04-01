@@ -44,6 +44,7 @@ router.post('/', async (req, res) => {
 
 // Update an existing vehicle
 router.put('/:id', async (req, res) => {
+    console.log(req.body);
     const { marca, modelo, ano, cor, cliente_id } = req.body;
     try {
         const [result] = await connect.query('UPDATE Veiculos SET marca = ?, modelo = ?, ano = ?, cor = ?, cliente_id = ? WHERE id = ?', [marca, modelo, ano, cor, cliente_id, req.params.id]);

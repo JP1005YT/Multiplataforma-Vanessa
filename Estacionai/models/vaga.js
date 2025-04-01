@@ -1,4 +1,4 @@
-class Vagas {
+export class Vagas {
     constructor(id, numero, tipo, disponivel) {
         this.id = id;
         this.numero = numero;
