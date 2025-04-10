@@ -19,7 +19,7 @@ app.use('/clientes', cliRouter)
 app.use('/vagas', vagaRouter)
 app.use('/veiculos', veiculoRouter)
 
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log('Server is running on port 3000')
-})
+})  
  
