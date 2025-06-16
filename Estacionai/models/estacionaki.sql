@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/04/2025 às 01:28
+-- Tempo de geração: 16/06/2025 às 14:07
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -39,7 +39,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `telefone`, `email`) VALUES
-(1, 'João', '18991238584', 'godlolpro32@gmail.com');
+(3, 'João Girotto', '18991238584', 'godlolpro32@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -57,10 +57,10 @@ CREATE TABLE `vagas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `veiculo`
+-- Estrutura para tabela `veiculos`
 --
 
-CREATE TABLE `veiculo` (
+CREATE TABLE `veiculos` (
   `id` int(4) NOT NULL,
   `marca` varchar(55) NOT NULL,
   `modelo` varchar(55) NOT NULL,
@@ -93,13 +93,13 @@ ALTER TABLE `vagas`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `vagas`
 --
 ALTER TABLE `vagas`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

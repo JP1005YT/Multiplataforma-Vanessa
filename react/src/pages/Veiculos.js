@@ -11,7 +11,7 @@ function Veiculos() {
     }, []);
 
     const fetchVeiculos = () => {
-        fetch('http://localhost:3001/veiculos')
+        fetch('http://localhost:3000/veiculos')
             .then(response => response.json())
             .then(data => setVeiculos(data))
             .catch(error => console.error('Erro ao buscar veículos:', error));
@@ -19,7 +19,7 @@ function Veiculos() {
 
     const handleDelete = (id) => {
         if (window.confirm('Tem certeza que deseja excluir este veículo?')) {
-            fetch(`http://localhost:3001/veiculos/${id}`, { method: 'DELETE' })
+            fetch(`http://localhost:3000/veiculos/${id}`, { method: 'DELETE' })
                 .then(() => fetchVeiculos())
                 .catch(error => console.error('Erro ao deletar veículo:', error));
         }
@@ -28,8 +28,8 @@ function Veiculos() {
     const handleSave = () => {
         const method = veiculoAtual.id ? 'PUT' : 'POST';
         const url = veiculoAtual.id 
-            ? `http://localhost:3001/veiculos/${veiculoAtual.id}` 
-            : 'http://localhost:3001/veiculos';
+            ? `http://localhost:3000/veiculos/${veiculoAtual.id}` 
+            : 'http://localhost:3000/veiculos';
 
         fetch(url, {
             method,
