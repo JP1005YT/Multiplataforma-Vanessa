@@ -1,9 +1,10 @@
 export class Vagas {
-    constructor(id, numero, tipo, disponivel) {
+    constructor(id, numero, tipo, disponivel,clienteId) {
         this._id = id;
         this._numero = numero;
         this._tipo = tipo;
         this._disponivel = disponivel;
+        this._clienteId = clienteId;
     }
 
     get id() {
@@ -36,5 +37,12 @@ export class Vagas {
 
     set disponivel(value) {
         this._disponivel = value;
+    }
+
+    get clienteId(){
+        return this._clienteId;
+    }
+    set clienteId(value) {
+        this._clienteId = value;
     }
 }

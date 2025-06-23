@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', async (_, res) => {
     try {
         const [rows] = await connect.query('SELECT * FROM Vagas');
-        const spots = rows.map(row => new Vagas(row.id, row.numero, row.tipo, row.disponivel));
+        const spots = rows.map(row => new Vagas(row.id, row.numero, row.tipo, row.disponivel, row.veiculoid));
         res.json(spots);
     } catch (err) {
         console.error(err);
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
     try {
         const [rows] = await connect.query('SELECT * FROM Vagas WHERE id = ?', [req.params.id]);
         if (rows.length === 0) return res.status(404).send('Parking spot not found');
-        const spot = new Vagas(rows[0].id, rows[0].numero, rows[0].tipo, rows[0].disponivel);
+        const spot = new Vagas(rows[0].id, rows[0].numero, rows[0].tipo, rows[0].disponivel, rows[0].veiculoid);
         res.json(spot);
     } catch (err) {
         console.error(err);
@@ -31,10 +31,10 @@ router.get('/:id', async (req, res) => {
 
 // Create a new parking spot
 router.post('/', async (req, res) => {
-    const { numero, tipo, disponivel } = req.body;
+    const { numero, tipo, disponivel, veiculoid } = req.body;
     try {
-        const [result] = await connect.query('INSERT INTO Vagas (numero, tipo, disponivel) VALUES (?, ?, ?)', [numero, tipo, disponivel]);
-        const newSpot = new Vagas(result.insertId, numero, tipo, disponivel);
+        const [result] = await connect.query('INSERT INTO Vagas (numero, tipo, disponivel, veiculoid) VALUES (?, ?, ?, ?)', [numero, tipo, disponivel, veiculoid]);
+        const newSpot = new Vagas(result.insertId, numero, tipo, disponivel, veiculoid);
         res.status(201).json(newSpot);
     } catch (err) {
         console.error(err);
@@ -44,11 +44,11 @@ router.post('/', async (req, res) => {
 
 // Update an existing parking spot
 router.put('/:id', async (req, res) => {
-    const { numero, tipo, disponivel } = req.body;
+    const { numero, tipo, disponivel, veiculoid } = req.body;
     try {
-        const [result] = await connect.query('UPDATE Vagas SET numero = ?, tipo = ?, disponivel = ? WHERE id = ?', [numero, tipo, disponivel, req.params.id]);
+        const [result] = await connect.query('UPDATE Vagas SET numero = ?, tipo = ?, disponivel = ?, veiculoid = ? WHERE id = ?', [numero, tipo, disponivel, veiculoid, req.params.id]);
         if (result.affectedRows === 0) return res.status(404).send('Parking spot not found');
-        const updatedSpot = new Vagas(req.params.id, numero, tipo, disponivel);
+        const updatedSpot = new Vagas(req.params.id, numero, tipo, disponivel, veiculoid);
         res.json(updatedSpot);
     } catch (err) {
         console.error(err);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/06/2025 às 14:07
+-- Tempo de geração: 23/06/2025 às 15:12
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -39,7 +39,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `telefone`, `email`) VALUES
-(3, 'João Girotto', '18991238584', 'godlolpro32@gmail.com');
+(3, 'João Girotto', '18991238584', 'joao.girottobusiness@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -51,8 +51,23 @@ CREATE TABLE `vagas` (
   `id` int(4) NOT NULL,
   `numero` int(4) NOT NULL,
   `tipo` varchar(55) NOT NULL,
-  `disponivel` varchar(55) NOT NULL
+  `disponivel` varchar(55) NOT NULL,
+  `veiculoid` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `vagas`
+--
+
+INSERT INTO `vagas` (`id`, `numero`, `tipo`, `disponivel`, `veiculoid`) VALUES
+(2, 1, 'Normal', 'Não', 0),
+(3, 2, 'Normal', 'Sim', 0),
+(4, 3, 'Normal', 'Sim', 0),
+(5, 4, 'Normal', 'Sim', 0),
+(6, 5, 'Normal', 'Sim', 0),
+(7, 6, 'Preferencial', 'Sim', 0),
+(8, 7, 'Idoso', 'Sim', 0),
+(9, 8, 'Deficiente', 'Sim', 0);
 
 -- --------------------------------------------------------
 
@@ -68,6 +83,13 @@ CREATE TABLE `veiculos` (
   `cor` varchar(55) NOT NULL,
   `cliente_id` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `veiculos`
+--
+
+INSERT INTO `veiculos` (`id`, `marca`, `modelo`, `ano`, `cor`, `cliente_id`) VALUES
+(0, 'Volkswagen', 'Fusca', 1974, 'Azul', 3);
 
 --
 -- Índices para tabelas despejadas
@@ -93,13 +115,13 @@ ALTER TABLE `vagas`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `vagas`
 --
 ALTER TABLE `vagas`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
